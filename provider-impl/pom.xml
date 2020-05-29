@@ -11,5 +11,17 @@
 
     <artifactId>provider-impl</artifactId>
 
+    <dependencies>
+        <!--通用实现-->
+        <dependency>
+            <groupId>com.lpc.learn.rpc</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
