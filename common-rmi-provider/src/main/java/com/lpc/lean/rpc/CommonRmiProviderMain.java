@@ -24,9 +24,9 @@ public class CommonRmiProviderMain {
         UserService service = new UserServiceImpl();
         UserSoa soa = new UserSoaImpl(service);
         // 如果 UserSoaImpl 自行扩展 UnicastRemoteObject ，这里就不用手动暴露接口了
-        UserSoa stub = (UserSoa) UnicastRemoteObject.exportObject(soa, 8082);
+        UserSoa stub = (UserSoa) UnicastRemoteObject.exportObject(soa, 8091);
 
-        Registry registry = LocateRegistry.createRegistry(8081);
+        Registry registry = LocateRegistry.createRegistry(8090);
         registry.rebind("userSoa", stub);
         log.info("完成启动");
         return;
