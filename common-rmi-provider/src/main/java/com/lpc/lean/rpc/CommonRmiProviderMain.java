@@ -6,10 +6,10 @@ import com.lpc.learn.rpc.soa.UserSoa;
 import com.lpc.learn.rpc.soa.UserSoaImpl;
 import lombok.extern.slf4j.Slf4j;
 
-import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  * @author: 李鹏程
@@ -20,12 +20,14 @@ import java.rmi.registry.Registry;
  */
 @Slf4j
 public class CommonRmiProviderMain {
-    public static void main(String[] args) throws RemoteException, MalformedURLException {
+    public static void main(String[] args) throws RemoteException {
         UserService service = new UserServiceImpl();
         UserSoa soa = new UserSoaImpl(service);
+        // 如果 UserSoaImpl 自行扩展 UnicastRemoteObject ，这里就不用手动暴露接口了
+        UserSoa stub = (UserSoa) UnicastRemoteObject.exportObject(soa, 8082);
 
         Registry registry = LocateRegistry.createRegistry(8081);
-        registry.rebind("userSoa", soa);
+        registry.rebind("userSoa", stub);
         log.info("完成启动");
         return;
 

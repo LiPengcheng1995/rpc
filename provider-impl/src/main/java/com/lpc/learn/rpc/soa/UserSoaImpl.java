@@ -15,11 +15,11 @@ import java.rmi.server.UnicastRemoteObject;
  * @Time: 21:58
  * @Description:
  */
-public class UserSoaImpl extends UnicastRemoteObject implements UserSoa {
+public class UserSoaImpl  implements UserSoa {
 
     private UserService userService;
 
-    public UserSoaImpl(UserService userService) throws RemoteException {
+    public UserSoaImpl(UserService userService)  {
         super();
         this.userService = userService;
     }
