@@ -15,5 +15,6 @@ import java.rmi.RemoteException;
  * @Description:
  */
 public interface UserSoa extends Remote {
+    String PROVIDER_ALIAS = "UserSoa";
     Response<String> deal(Request<String> request) throws RemoteException;
 }

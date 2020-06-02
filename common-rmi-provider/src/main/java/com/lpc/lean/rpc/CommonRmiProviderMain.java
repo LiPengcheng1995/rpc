@@ -27,7 +27,7 @@ public class CommonRmiProviderMain {
         UserSoa stub = (UserSoa) UnicastRemoteObject.exportObject(soa, 8091);
 
         Registry registry = LocateRegistry.createRegistry(8090);
-        registry.rebind("userSoa", stub);
+        registry.rebind(UserSoa.PROVIDER_ALIAS, stub);
         log.info("完成启动");
         return;
 

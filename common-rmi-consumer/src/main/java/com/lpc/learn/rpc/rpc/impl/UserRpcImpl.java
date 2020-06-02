@@ -41,6 +41,6 @@ public class UserRpcImpl implements UserRpc, InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Registry registry = LocateRegistry.getRegistry("localhost",8090);
-        soa = (UserSoa) registry.lookup("userSoa");
+        soa = (UserSoa) registry.lookup(UserSoa.PROVIDER_ALIAS);
     }
 }
