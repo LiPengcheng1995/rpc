@@ -5,6 +5,9 @@ import com.lpc.learn.rpc.domain.Request;
 import com.lpc.learn.rpc.domain.Response;
 import com.lpc.learn.rpc.service.UserService;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 /**
  * @author: 李鹏程
  * @email: lipengcheng3@jd.com
@@ -12,11 +15,12 @@ import com.lpc.learn.rpc.service.UserService;
  * @Time: 21:58
  * @Description:
  */
-public class UserSoaImpl implements UserSoa {
+public class UserSoaImpl extends UnicastRemoteObject implements UserSoa {
 
     private UserService userService;
 
-    public UserSoaImpl(UserService userService) {
+    public UserSoaImpl(UserService userService) throws RemoteException {
+        super();
         this.userService = userService;
     }
 
