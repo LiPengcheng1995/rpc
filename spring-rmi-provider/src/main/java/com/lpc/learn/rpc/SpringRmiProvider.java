@@ -1,6 +1,7 @@
 package com.lpc.learn.rpc;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
@@ -13,6 +14,13 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Slf4j
 @SpringBootApplication
-@ImportResource(locations = {"classpath:dubbo/dubbo.xml"})
 public class SpringRmiProvider {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringRmiProvider.class, args);
+        try {
+            System.in.read();
+        } catch (Throwable e) {
+            log.error("收到退出消息,",e);
+        }
+    }
 }
